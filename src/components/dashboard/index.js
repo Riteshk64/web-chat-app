@@ -27,8 +27,8 @@ const Dashboard= ({onSignOut}) => {
         <Drawer.Body>
             <h3>Hey, {profile.name}</h3>
             <Divider />
-            <EditableInput name="nickname" initialValue={profile.name} onSave={onSave} label={<h6 className="mb-2">Nickname</h6>}/>
             <AvatarUploadBtn />
+            <EditableInput name="nickname" initialValue={profile.name} onSave={onSave} label={<h6 className="mb-2">Nickname</h6>}/>
         </Drawer.Body>
 
         <Drawer.Footer>
