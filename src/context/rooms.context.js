@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { database } from "../misc/firebase";
 import { transformToArrayWithId } from "../misc/helpers";
 
@@ -16,6 +16,9 @@ export const RoomsProvider = ({children}) => {
         return () => {
             roomListRef.off(); //Detach all real time listeners from this reference in the database
         }
+
     },[]);
     return <RoomsContext.Provider value={rooms}>{children}</RoomsContext.Provider>
 };
+
+export const useRooms = () => useContext(RoomsContext);
