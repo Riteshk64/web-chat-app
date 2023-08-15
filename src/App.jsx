@@ -6,19 +6,16 @@ import PrivateRoute from './components/PrivateRoute';
 import { Switch,BrowserRouter } from 'react-router-dom';
 import PublicRoute from './components/PublicRoute';
 import { ProfileProvider } from './context/profile.context';
-import React from 'react';
 
 function App() {
   return (
     <BrowserRouter>
-     <React.StrictMode>
       <ProfileProvider>
         <Switch>
           <PublicRoute path="/signin"><SignIn /></PublicRoute>
           <PrivateRoute path="/"><Home /></PrivateRoute>
         </Switch>
         </ProfileProvider>
-        </React.StrictMode>
       </BrowserRouter>
   );
 }
