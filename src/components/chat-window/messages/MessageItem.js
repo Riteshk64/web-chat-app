@@ -16,6 +16,15 @@ const renderFileMessage = (file) => {
             <ImageBtnModal src={file.url} fileName={file.name} />
         </div>
     }
+
+    if(file.contentType.includes('audio')){
+        return (
+        <audio controls>
+            <source src={file.url} type="audio/mp3" />
+            Your browser does not support the audio element.
+        </audio>
+        );
+    }
     return <a href={file.url}>Download {file.name}</a>;
 }
 
@@ -49,7 +58,7 @@ const MessageItem = ({message,handleAdmin, handleLike, handleDelete}) => {
             <TimeAgo datetime={createdAt} className="font-normal text-black-45 ml-2"/>
              <IconBtnControl {...(isLiked ? {color: 'red'} : {})} isVisible={canShowIcons} iconName="heart" tooltip="Like this message" onClick={() => handleLike(message.id)} badgeContent={likeCount} />
              { isAuthor && 
-                <IconBtnControl isVisible={canShowIcons} iconName="close" tooltip="Delete this message" onClick={() => handleDelete(message.id)} />
+                <IconBtnControl isVisible={canShowIcons} iconName="close" tooltip="Delete this message" onClick={() => handleDelete(message.id, file)} />
              }
         </div>
         <div>
