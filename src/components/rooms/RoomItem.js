@@ -11,20 +11,20 @@ const RoomItem = ({room}) => {
         </div>
 
         <div className="d-flex align-items-center text-black-70">
-            {
-                lastMessage ? 
-                <>
-                <div className="d-flex align-items-center">
-                    <ProfileAvatar src={lastMessage.author.avatar} name={lastMessage.author.name} size="sm"/>
-                </div>
-                <div className="text-disappear ml-2">
-                    <div className="italic">{lastMessage.author.name}</div>
-                    <span>{lastMessage.text || lastMessage.file.name}</span>
-                </div>
-                </> 
-                :
-                <span>No messages yet...</span>
-            }
+        {
+    lastMessage ? 
+    <>
+    <div className="d-flex align-items-center">
+        {lastMessage.author && <ProfileAvatar src={lastMessage.author.avatar} name={lastMessage.author.name} size="sm" />}
+    </div>
+    <div className="text-disappear ml-2">
+        {lastMessage.author && <div className="italic">{lastMessage.author.name}</div>}
+        <span>{lastMessage.text || (lastMessage.file && lastMessage.file.name) || ''}</span>
+    </div>
+    </> 
+    :
+    <span>No messages yet...</span>
+}
         </div>
     </div> 
     );
