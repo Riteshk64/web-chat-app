@@ -29,7 +29,7 @@ const EditRoomBtnDrawer = () => {
     }
 
     const onDescSave = (newDesc) => {
-        updateData('desciption',newDesc);
+        updateData('description',newDesc);
     }
     return ( 
         <div>
